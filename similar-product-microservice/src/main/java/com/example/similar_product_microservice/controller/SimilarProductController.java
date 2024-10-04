@@ -1,9 +1,11 @@
 package com.example.similar_product_microservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.similar_product_microservice.entity.SimilarProduct;
+import com.example.similar_product_microservice.exceptions.NotFoundException;
 import com.example.similar_product_microservice.service.SimilarProductService;
 
 import java.util.List;
@@ -17,12 +19,19 @@ public class SimilarProductController {
     private SimilarProductService similarProductService;
 
     @GetMapping("/{productId}")
-    public List<SimilarProduct> getSimilarProducts(@PathVariable UUID productId) {
-        return similarProductService.getSimilarProducts(productId);
+    public ResponseEntity<List<SimilarProduct>> getSimilarProducts(@PathVariable UUID productId) {
+        List<SimilarProduct> similarProducts = similarProductService.getSimilarProducts(productId);
+
+        if (similarProducts == null || similarProducts.isEmpty()) {
+            throw new NotFoundException("Aucun produit similaire trouvé pour l'ID produit : " + productId);
+        }
+
+        return ResponseEntity.ok(similarProducts);
     }
 
     @DeleteMapping
-    public void deleteAll() {
+    public ResponseEntity<Void> deleteAll() {
         similarProductService.deleteAll();
+        return ResponseEntity.noContent().build();
     }
 }
