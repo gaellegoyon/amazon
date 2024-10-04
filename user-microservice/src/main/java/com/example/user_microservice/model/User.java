@@ -12,20 +12,24 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Data
+@SuperBuilder
+@NoArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue
     private UUID id;
 
-    @NotNull
+    @NotNull(message = "Name is required")
     private String name;
 
-    @Email
-    @NotNull
+    @Email(message = "Email should be valid")
+    @NotNull(message = "Email is required")
     private String email;
 
     @Size(min = 6, message = "Password must be at least 6 characters long")

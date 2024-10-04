@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.user_microservice.exceptions.NotFoundException;
 import com.example.user_microservice.model.User;
 import com.example.user_microservice.repository.UserRepository;
 
@@ -22,7 +23,8 @@ public class UserService {
     }
 
     public User findById(UUID id) {
-        return userRepository.findById(id).orElse(null);
+        return userRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Utilisateur non trouvé avec l'ID : " + id));
     }
 
     public User save(User user) {
