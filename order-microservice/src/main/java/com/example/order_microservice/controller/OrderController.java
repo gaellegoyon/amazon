@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.order_microservice.dto.OrderRequest;
+import com.example.order_microservice.exceptions.BadRequestException;
+import com.example.order_microservice.exceptions.NotFoundException;
 import com.example.order_microservice.model.Order;
 import com.example.order_microservice.service.OrderService;
 
@@ -26,6 +28,9 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody OrderRequest orderRequest) {
+        if (orderRequest.getProductIds() == null || orderRequest.getProductIds().isEmpty()) {
+            throw new BadRequestException("La liste des IDs de produits ne peut pas être vide.");
+        }
         Order order = orderService.createOrder(orderRequest.getUserId(), orderRequest.getProductIds());
         return ResponseEntity.status(HttpStatus.CREATED).body(order);
     }
@@ -37,11 +42,23 @@ public class OrderController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable UUID id) {
-        return ResponseEntity.ok(orderService.findById(id));
+        Order order = orderService.findById(id);
+
+        if (order == null) {
+            throw new NotFoundException("Commande non trouvée pour l'ID: " + id);
+        }
+
+        return ResponseEntity.ok(order);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOrderById(@PathVariable UUID id) {
+        Order order = orderService.findById(id);
+
+        if (order == null) {
+            throw new NotFoundException("Impossible de supprimer. Commande non trouvée pour l'ID: " + id);
+        }
+
         orderService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
