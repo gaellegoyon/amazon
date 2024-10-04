@@ -1,0 +1,39 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+.mvn/
+mvnw
+mvnw.cmd
+build/
+
+
+# Gradle (si applicable)
+.gradle/
+build/
+
+# Logs
+*.log
+logs/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Generated files
+*.class
+*.war
+*.jar
+
+# Spring Boot
+application.properties
+application.yml
+
+# VS Code
+.vscode/
+
+# Node.js (si applicable)
+node_modules/

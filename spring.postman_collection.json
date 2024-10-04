@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "8b728f1f-e33b-4488-9bec-68bb4779350d",
+		"name": "spring",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38724500"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "postUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/users/01816df0-6e0b-48cc-bbd2-cc8b00ea8525",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"01816df0-6e0b-48cc-bbd2-cc8b00ea8525"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "PostProduct",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GetProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8087/products",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProduct",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAllProducts",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "PostOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"c32add59-56e0-4c2e-ad41-0ee47ee5ed85\",\r\n    \"productIds\": [\r\n        \"99a18e6f-bae7-4f77-81aa-11bda3ff61a3\",\r\n        \"889a6df5-a259-42ca-aab2-b7ac968fb1a4\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrder",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/orders/c1cfdf4b-3290-41af-b9be-a46af3e3ad3c",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"orders",
+								"c1cfdf4b-3290-41af-b9be-a46af3e3ad3c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOrder",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/orders/2aa39312-5751-467e-9328-8f5408a75c50",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"orders",
+								"2aa39312-5751-467e-9328-8f5408a75c50"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAllOrders",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SimilarProduct",
+			"item": [
+				{
+					"name": "GetSimilarProducts",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAllSimilars",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/similars",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"similars"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
